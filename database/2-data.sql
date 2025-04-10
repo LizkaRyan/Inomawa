@@ -36,12 +36,13 @@ INSERT INTO avis (star, description) VALUES
 
 -- Insertion dans la table request_state
 INSERT INTO request_state (state) VALUES
-                                      ('Voaray'),
-                                      ('An-dalana'),
-                                      ('Vita');
+                                      ('En attente'),
+                                      ('En cours'),
+                                      ('Termine'),
+                                      ('Rejete');
 
 -- Insertion dans la table services
-INSERT INTO services (description, date_, time_, addresse, id_request_state, id_worker, id_client, id_service) VALUES
+INSERT INTO work (description, date_work, time_work, addresse, id_request_state, id_worker, id_client, id_service) VALUES
                                                                                                                    ('Fanamboarana rindrina simba', '2025-04-01', '08:30', 'Lot 123 Analakely', 1, 1, 4, 1),
                                                                                                                    ('Fanadiovana fiara tao anatin''ny fotoana fohy', '2025-04-02', '10:00', 'Lot 456 Isoraka', 2, 3, 2, 4),
 ('Famindran-toerana entana avy eny Ambanidia ho eny Andohalo', '2025-04-03', '14:00', 'Lot 789 Ambanidia', 3, 2, 3, 2);
@@ -60,14 +61,3 @@ INSERT INTO avis_user (id_user, id_avis) VALUES
 
 INSERT INTO users (email, password, name, last_name) VALUES
                                                          ('ryan@gmail.com', 'itu16', 'Ryan', 'Lizka');
-
-select
-    u1_0.id_user,
-    u1_0.email,
-    u1_0.last_name,
-    u1_0.name,
-    u1_0.password
-from
-    user u1_0
-where
-        u1_0.email='ryan@gmail.com'

@@ -51,18 +51,18 @@ CREATE TABLE request_state
     UNIQUE (state)
 );
 
-CREATE TABLE services
+CREATE TABLE work
 (
-    id_service_request SERIAL,
-    description        VARCHAR(255),
-    date_              DATE         NOT NULL,
-    time_              TIME         NOT NULL,
-    addresse           VARCHAR(100) NOT NULL,
-    id_request_state   INTEGER      NOT NULL,
-    id_worker          INTEGER      NOT NULL,
-    id_client          INTEGER      NOT NULL,
-    id_service         INTEGER      NOT NULL,
-    PRIMARY KEY (id_service_request),
+    id_work_request  SERIAL,
+    description      VARCHAR(255),
+    date_work        DATE         NOT NULL,
+    time_work        TIME         NOT NULL,
+    addresse         VARCHAR(100) NOT NULL,
+    id_request_state INTEGER      NOT NULL,
+    id_worker        INTEGER      NOT NULL,
+    id_client        INTEGER      NOT NULL,
+    id_service       INTEGER      NOT NULL,
+    PRIMARY KEY (id_work_request),
     FOREIGN KEY (id_request_state) REFERENCES request_state (id_request_state),
     FOREIGN KEY (id_worker) REFERENCES worker (id_worker),
     FOREIGN KEY (id_client) REFERENCES users (id_user),
@@ -71,10 +71,10 @@ CREATE TABLE services
 
 CREATE TABLE request_photo
 (
-    id_service_request INTEGER,
-    id_photo           INTEGER,
-    PRIMARY KEY (id_service_request, id_photo),
-    FOREIGN KEY (id_service_request) REFERENCES services (id_service_request),
+    id_work_request INTEGER,
+    id_photo        INTEGER,
+    PRIMARY KEY (id_work_request, id_photo),
+    FOREIGN KEY (id_work_request) REFERENCES work (id_work_request),
     FOREIGN KEY (id_photo) REFERENCES photo (id_photo)
 );
 
